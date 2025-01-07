@@ -1,66 +1,64 @@
 class main():
     def __init__(self):
-        self.boas_vindas()
-        self.opções()
-        self.usuario()
+        self.categorias = {
+            1: ('Profissões', ['dentista', 'programador', 'policial']),
+            2:( 'Empresas', ['titanic', 'avatar', 'star wars', 'harry potter']),
+            3: ('Filmes', ['titanic', 'avatar', 'star wars', 'harry potter']),
+            4: ('Países', ['brasil', 'canada', 'alemanha', 'australia']),
+            5: ('Cores', ['vermelho', 'azul', 'amarelo', 'verde']),
+        }
+
+        self.palavra_atual = ''
+        self.palavra_completa = []
+        self.letras_adivinhadas = set()
         
         
         
     
     def boas_vindas(self):
-            print(10*'=' +'Bem vindo ao jogo da forca!' + 10*'=')
-            print('Escolha uma categoria:')
-            print(' 1 - Profissões\n 2 - Empresas\n 3 - Filmes\n 4 - Países\n 5 - Cores')
+            print("===== BEM-VINDO AO JOGO DA FORCA =====")
+            print("Escolha uma categoria:")
+            for key, (nome, _) in self.categorias.items():
+             print(f"{key} - {nome}")
+            print("=======================================\n")
 
-    def opções(self):
-        category = input('Digite o número da categoria: ')
-        if category == '1':
-            print('Profissões')
-            self.show_word(self.palavras('jobs', 0))
-        elif category == '2':
-            print('Empresas')
-            self.show_word(self.palavras('companies', 0))
-        elif category == '3':
-            print('Filmes')
-            self.show_word(self.palavras('movies', 0))
-        elif category == '4':
-            print('Países')
-            self.show_word(self.palavras('countries', 0))
-        elif category == '5':
-            print('Cores')
-            self.show_word(self.palavras('colors', 0))
-        else:
-            print('Categoria inválida')
+    def opções_categorias(self):
+        while True:
+            category = input('Digite o número da categoria: ').strip()
+            if category in self.categorias:
+                _, palavras = self.categorias[category]
+                return palavras
+            print('Categoria inválida. Tente novamente.')
 
-    def palavras(self, category, index=None):
-        words = {
-        'jobs' : ['dentista', 'programador', 'policial'],
-        'companies' : ['google', 'amazon', 'tesla', 'microsoft'],
-        'movies' : ['titanic', 'avatar', 'star wars', 'harry potter'],
-        'countries' : ['brasil', 'canada', 'alemanha', 'australia'],
-        'colors' : ['vermelho', 'azul', 'amarelo', 'verde'],
-    }
-        return words[category][index] if index is not None else words[category]
+    def inicializar_palavra(self, palavras):
+        import random
+        self.palavra_atual = random.choice(palavras)
+        self.estado_palavra = ["_"] * len(self.palavra_atual)
+
+    def show_words(self):
+        print("\nPalavra: " + " ".join(self.estado_palavra))
+            
+   
 
     def resposta(self):
-        pergunta = input('\nDigite uma letra: ').strip().lower()
-        return pergunta
-    
+        while True:
+            pergunta = input('\nDigite uma letra: ').strip().lower()
+            if  len(pergunta) == 1 and pergunta.isalpha():
+                return pergunta
+            print("Digite apenas uma letra.")
+        
+        
+    def atualizar_palavra(self, letra):
+        if letra in self.palavra_atual:
+             print(f"A letra '{letra}' está na palavra.")
+        for indice, word in enumerate(self.palavra_atual):
+            if word == letra:
+                self.estado_palavra[indice] = letra
+            return True
+        else:
+            print(f"A letra '{letra}' não está na palavra.")
+            return False
 
-    def show_word(self, word):
-        letras = []
-        print('A palavra é: ')
-        for letter in word:
-            letras.append(letter)
-            print('_', end='')
-        if self.resposta() in letras:
-            print('Letra encontrada')
-            letras
-        
-        
-            # for letter in 
-            # if self.usuario() in word:
-            #     print('Letra encontrada')
 
     
 
