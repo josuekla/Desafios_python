@@ -1,11 +1,11 @@
 class main():
     def __init__(self):
         self.categorias = {
-            1: ('Profissões', ['dentista', 'programador', 'policial']),
-            2:( 'Empresas', ['titanic', 'avatar', 'star wars', 'harry potter']),
-            3: ('Filmes', ['titanic', 'avatar', 'star wars', 'harry potter']),
-            4: ('Países', ['brasil', 'canada', 'alemanha', 'australia']),
-            5: ('Cores', ['vermelho', 'azul', 'amarelo', 'verde']),
+            "1": ('Profissões', ['dentista', 'programador', 'policial']),
+            "2":( 'Empresas', ['titanic', 'avatar', 'star wars', 'harry potter']),
+            "3": ('Filmes', ['titanic', 'avatar', 'star wars', 'harry potter']),
+            "4": ('Países', ['brasil', 'canada', 'alemanha', 'australia']),
+            "5": ('Cores', ['vermelho', 'azul', 'amarelo', 'verde']),
         }
 
         self.palavra_atual = ''
@@ -62,8 +62,10 @@ class main():
 
     
 
-
+    
+        
 
 
 if __name__ == '__main__':
-    main()
+    jogo = main()
+    jogo.jogo_main()
