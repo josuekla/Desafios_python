@@ -16,7 +16,22 @@ class Calculadora():
 			resultado = valores[0]
 			for num in valores[1:]:
 				resultado -= num
+			return resultado
+			
+		def multiplicacao(self, *args):
+			resultado = 1
+			for num in args:
+				resultado *= num
+			return  resultado
+		
+		def divisao(self, *args):
+			try:
+				resultado = 1
+				for num in args[1:]:
+					resultado /= num
 				return resultado
+			except ZeroDivisionError:
+				return ("Erro: O numero náo pode ser dovidido por 0")
 
 		def pergunta_init(self):
 			main = input("Qual operacão matemática deseja?")
@@ -25,7 +40,6 @@ def instrucoes():
 	print("CALCULADORA SIMPLES EM PYTHON")
 	print("Faça o seu calculo matemático a seguir \n")
 	
-)
 def subtracao(*args)
 
 	
