@@ -3,7 +3,7 @@ class main():
     def __init__(self):
         self.categorias = {
             "1": ('Profissões', ['dentista', 'programador', 'policial']),
-            "2":( 'Empresas', ['titanic', 'avatar', 'star wars', 'harry potter']),
+            "2":( 'Empresas', ['google', 'amazon', 'tesla', 'microsoft']),
             "3": ('Filmes', ['titanic', 'avatar', 'star wars', 'harry potter']),
             "4": ('Países', ['brasil', 'canada', 'alemanha', 'australia']),
             "5": ('Cores', ['vermelho', 'azul', 'amarelo', 'verde']),
@@ -34,7 +34,8 @@ class main():
 
     def inicializar_palavra(self, palavras):
         self.palavra_atual = random.choice(palavras)
-        self.estado_palavra = ["_"] * len(self.palavra_atual)
+        self.estado_palavra = ['_' if letra != ' ' else ' ' for letra in self.palavra_atual]
+
 
     def show_words(self):
         print("\nPalavra: " + " ".join(self.estado_palavra))
