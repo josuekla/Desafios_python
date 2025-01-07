@@ -1,3 +1,4 @@
+import random
 class main():
     def __init__(self):
         self.categorias = {
@@ -25,13 +26,13 @@ class main():
     def opções_categorias(self):
         while True:
             category = input('Digite o número da categoria: ').strip()
+            print(self.categorias[category][0])
             if category in self.categorias:
                 _, palavras = self.categorias[category]
                 return palavras
             print('Categoria inválida. Tente novamente.')
 
     def inicializar_palavra(self, palavras):
-        import random
         self.palavra_atual = random.choice(palavras)
         self.estado_palavra = ["_"] * len(self.palavra_atual)
 
@@ -50,17 +51,36 @@ class main():
         
     def atualizar_palavra(self, letra):
         if letra in self.palavra_atual:
-             print(f"A letra '{letra}' está na palavra.")
-        for indice, word in enumerate(self.palavra_atual):
-            if word == letra:
-                self.estado_palavra[indice] = letra
+            print(f"A letra '{letra}' está na palavra.")
+            for indice, word in enumerate(self.palavra_atual):
+                if word == letra:
+                    self.estado_palavra[indice] = letra
             return True
         else:
             print(f"A letra '{letra}' não está na palavra.")
             return False
 
 
-    
+    def jogo_main(self):
+        self.boas_vindas()
+        palavras = self.opções_categorias()
+        self.inicializar_palavra(palavras)
+
+        while '_' in self.estado_palavra:
+            self.show_words()
+            letra = self.resposta()
+
+            if letra in self.letras_adivinhadas:
+                print(f"Você já tentou a letra '{letra}'.")
+            else:
+                self.letras_adivinhadas.add(letra)
+                self.atualizar_palavra(letra)
+
+        if "_" not in self.estado_palavra:
+             print("\nParabéns! Você ganhou!")
+        else:
+            print("\nQue pena! Você perdeu.")
+            print(f"A palavra era: {self.palavra_atual}")
 
     
         
