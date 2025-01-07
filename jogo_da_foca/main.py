@@ -2,7 +2,7 @@ class main():
     def __init__(self):
         self.boas_vindas()
         self.opções()
-        self.jogo()
+        self.usuario()
         
         
         
@@ -16,23 +16,23 @@ class main():
         category = input('Digite o número da categoria: ')
         if category == '1':
             print('Profissões')
-            show_word(palavras('jobs', 0))
+            self.show_word(self.palavras('jobs', 0))
         elif category == '2':
             print('Empresas')
-            show_word(self.palavras('companies', 0))
+            self.show_word(self.palavras('companies', 0))
         elif category == '3':
             print('Filmes')
-            show_word(self.palavras('movies', 0))
+            self.show_word(self.palavras('movies', 0))
         elif category == '4':
             print('Países')
-            show_word(self.palavras('countries', 0))
+            self.show_word(self.palavras('countries', 0))
         elif category == '5':
             print('Cores')
-            show_word(self.palavras('colors', 0))
+            self.show_word(self.palavras('colors', 0))
         else:
             print('Categoria inválida')
 
-    def palavras(category, index=None):
+    def palavras(self, category, index=None):
         words = {
         'jobs' : ['dentista', 'programador', 'policial'],
         'companies' : ['google', 'amazon', 'tesla', 'microsoft'],
@@ -42,10 +42,26 @@ class main():
     }
         return words[category][index] if index is not None else words[category]
 
-    def show_word(word):
+    def resposta(self):
+        pergunta = input('\nDigite uma letra: ').strip().lower()
+        return pergunta
+    
+
+    def show_word(self, word):
+        letras = []
         print('A palavra é: ')
         for letter in word:
-            print('_', end=' ')
+            letras.append(letter)
+            print('_', end='')
+        if self.resposta() in letras:
+            print('Letra encontrada')
+            letras
+        
+        
+            # for letter in 
+            # if self.usuario() in word:
+            #     print('Letra encontrada')
+
     
 
 
