@@ -12,6 +12,8 @@ class main():
         self.palavra_atual = ''
         self.palavra_completa = []
         self.letras_adivinhadas = set()
+        self.erros = 0
+        self.erros_max = 6
         
         
         
@@ -59,6 +61,8 @@ class main():
             return True
         else:
             print(f"A letra '{letra}' não está na palavra.")
+            self.erros += 1
+            print(f"erros: {self.erros}, erros restantes: {self.erros_max - self.erros}")
             return False
 
 
@@ -67,11 +71,11 @@ class main():
         palavras = self.opções_categorias()
         self.inicializar_palavra(palavras)
 
-        while '_' in self.estado_palavra:
+        while '_' in self.estado_palavra and self.erros < self.erros_max:
             self.show_words()
             letra = self.resposta()
 
-            if letra in self.letras_adivinhadas:
+            if letra in self.letras_adivinhadas :
                 print(f"Você já tentou a letra '{letra}'.")
             else:
                 self.letras_adivinhadas.add(letra)
@@ -79,6 +83,11 @@ class main():
 
         if "_" not in self.estado_palavra:
              print("\nParabéns! Você ganhou!")
+             pergunta = input("Deseja jogar novamente? (s/n): ").strip().lower()
+             if pergunta == 's':
+                 self.jogo_main()
+             else:
+                    print("Obrigado por jogar!")
         else:
             print("\nQue pena! Você perdeu.")
             print(f"A palavra era: {self.palavra_atual}")
