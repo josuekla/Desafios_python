@@ -34,3 +34,10 @@ def gerador_senha():
 
     senha += random.choices(caracteres, k=tamanho - len(senha))
 
+
+    random.shuffle(senha)
+    senha = "".join(senha)
+    print(f"\nSua senha é: {senha}")
+
+if __name__ == '__main__':
+    gerador_senha()
