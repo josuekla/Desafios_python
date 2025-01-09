@@ -12,4 +12,14 @@ def joke_randow():
     except requests.exceptions.RequestException as e:
         print(f'Erro: {e}')
         return None
+def display_joke(joke):
+    if joke:
+        print("\n===== PIADA DO DIA =====")
+        print(f"{joke['setup']}")
+        input("\nPressione Enter para ver a resposta...")
+        print(f"{joke['punchline']}")
+        print("=========================")
+    else:
+        print("Nenhuma piada encontrada.")
+
     
