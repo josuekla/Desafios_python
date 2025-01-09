@@ -1,7 +1,7 @@
 import requests
 
 def joke_randow():
-    url = ' https://us-central1-kivson.cloudfunctions.net/charada-aleatoria'
+    url = 'https://official-joke-api.appspot.com/random_joke'
     try:
         response = requests.get(url)
         if response.status_code == 200:
