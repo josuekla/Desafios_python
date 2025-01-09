@@ -22,4 +22,24 @@ def display_joke(joke):
     else:
         print("Nenhuma piada encontrada.")
 
+def main():
+    print("===== CONSULTOR DE PIADAS =====")
+    while True:
+        print("\nEscolha uma opção:")
+        print("1. Mostrar uma piada")
+        print("2. Sair")
+        escolha = input("\nDigite sua escolha: ").strip()
+
+        if escolha == "1":
+            joke = joke_randow()
+            display_joke(joke)
+        elif escolha == "2":
+            print("Saindo... Obrigado por usar o consultor de piadas!")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    main()
+
     
