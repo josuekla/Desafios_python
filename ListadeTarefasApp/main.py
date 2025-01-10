@@ -32,3 +32,6 @@ class TodoApp(BoxLayout):
 class TodoAppMain(App):
     def build(self):
         return TodoApp()
+    
+if __name__ == "__main__":
+    TodoAppMain().run()
